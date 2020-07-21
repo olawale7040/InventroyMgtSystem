@@ -1,0 +1,48 @@
+﻿@model InventroyMgtSystem.Models.Category
+@{
+    ViewData["Title"] = "UpSet";
+}
+
+
+<h1>
+    @(Model.Id != 0 ? "Update Category" : "Add Category")
+</h1>
+<form asp-action="UpSet"  method="post">
+    <div class="container">
+        <div class="row px-2 mx-2 backgroundWhite border">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="col-md-12 px-3" style="border-bottom:solid 1px #325d88;">
+                <h2 class="text-primary">Category</h2>
+                @if (Model.Id != 0)
+                {
+                    <input type="hidden" asp-for="@Model.Id" />
+                }
+            </div>
+            <div class="col-md-8 pt-3">
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="@Model.Name"></label>
+                    </div>
+                    <div class="col-9">
+                        <input type="text" asp-for="@Model.Name" class="form-control" />
+                        <span class="text-danger" asp-validation-for="@Model.Name"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-9 offset-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary form-control">@(Model.Id != 0 ? "Update" : "Create")</button>
+                            </div>
+                            <div class="col-6">
+                                <a asp-action="Index" class="btn btn-success form-control">Back To list </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+

@@ -18,5 +18,10 @@ namespace InventroyMgtSystem.Models
         public int Quantity { get; set; }
 
         public DateTime DateSupplied { get; set; }
+
+        public string EmployeeId { get; set; }
+
+        [ForeignKey("EmployeeId")]
+        public virtual Employee Employee { get; set; }
     }
 }

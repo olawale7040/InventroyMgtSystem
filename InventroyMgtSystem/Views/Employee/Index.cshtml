@@ -1,0 +1,46 @@
+﻿@using InventroyMgtSystem.Utilitis
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (User.IsInRole(SD.WarehouseManager))
+{
+
+    <div class="border container backgroundWhite">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-primary">List of Users</h2>
+            </div>
+            <div class="col-md-6 text-right">
+                <a  asp-area="Identity" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> &nbsp;
+                    Add New User
+                </a>
+            </div>
+        </div>
+        <br />
+        <table id="dataLoad" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+}
+else
+{
+    <div>
+        <h2 class="text-danger">Access denied!!!</h2>
+    </div>
+}
+@section scripts{
+    <script src="~/js/employee.js"></script>
+}
+
+

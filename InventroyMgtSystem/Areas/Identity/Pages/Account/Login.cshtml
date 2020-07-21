@@ -1,0 +1,41 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="wrapper fadeInDown" style="margin-top: 60px;">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <h3 class="text-success mt-3 mb-3">Inventory Management System</h3>
+        </div>
+
+        <!-- Login Form -->
+        <form id="account" method="post">
+            <input type="email" id="login" asp-for="Input.Email" class="fadeIn second" placeholder="username" />
+            <br />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+            <input asp-for="Input.Password" id="password" class="fadeIn third" placeholder="password" />
+            <br />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+            <button type="submit" class="fadeIn fourth btn_submit bg-success mt-3">Log in</button>
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+@section Styles {
+    <link href="~/css/login.css" rel="stylesheet" type="text/css" />
+}

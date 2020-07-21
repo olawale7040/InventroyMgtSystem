@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace InventroyMgtSystem.Models
 {
-    public class Employee
+    public class Employee : IdentityUser
     {
         [Display(Name = "Full Name")]
         public string FirstName { get; set; }

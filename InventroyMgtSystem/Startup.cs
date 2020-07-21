@@ -12,6 +12,8 @@ using InventroyMgtSystem.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using InventroyMgtSystem.Repository.IRepository;
+using InventroyMgtSystem.Repository;
 
 namespace InventroyMgtSystem
 {
@@ -30,10 +32,16 @@ namespace InventroyMgtSystem
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+           // services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+              //  .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddScoped<IAllDbSets, AllDbSetsRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

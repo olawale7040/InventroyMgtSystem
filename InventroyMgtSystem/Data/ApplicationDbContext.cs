@@ -21,5 +21,7 @@ namespace InventroyMgtSystem.Data
 
         public DbSet<SuppliedGood> SuppliedGood { get; set; }
 
+        public DbSet<Employee> Employee { get; set; }
+
     }
 }

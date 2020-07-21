@@ -1,0 +1,76 @@
+﻿@model InventroyMgtSystem.Models.ViewModels.InventoryViewModel
+@{
+    ViewData["Title"] = "UpSet";
+}
+
+
+<h1 class="text-primary">
+    @(Model.InventoryItem.Id != 0 ? "Update Inventory Item" : "Add Inventory Item")
+</h1>
+<form asp-action="UpSet" method="post">
+    <div class="container">
+        <div class="row px-2 mx-2 backgroundWhite border">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="col-md-12 px-3" style="        border-bottom: solid 1px #325d88;">
+                @if (Model.InventoryItem.Id != 0)
+                {
+                    <input type="hidden" asp-for="@Model.InventoryItem.Id" />
+                }
+            </div>
+            <div class="col-md-8 pt-3">
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="@Model.InventoryItem.Name"></label>
+                    </div>
+                    <div class="col-9">
+                        <input type="text" asp-for="@Model.InventoryItem.Name" class="form-control" />
+                        <span class="text-danger" asp-validation-for="@Model.InventoryItem.Name"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="@Model.InventoryItem.CategoryId"></label>
+                    </div>
+                    <div class="col-9">
+                        @Html.DropDownListFor(m => m.InventoryItem.CategoryId,
+                                            Model.Category,
+                                            "-Select Category-",
+                                            new { @class = "form-control" })
+                        <span class="text-danger" asp-validation-for="InventoryItem.CategoryId"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="@Model.InventoryItem.Price"></label>
+                    </div>
+                    <div class="col-9">
+                        <input type="text" asp-for="@Model.InventoryItem.Price" class="form-control" />
+                        <span class="text-danger" asp-validation-for="@Model.InventoryItem.Price"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="@Model.InventoryItem.Description"></label>
+                    </div>
+                    <div class="col-9">
+                        <textarea id="txtDesc" style="height:150px;" asp-for="@Model.InventoryItem.Description" class="form-control"></textarea>
+                        <span class="text-danger" asp-validation-for="@Model.InventoryItem.Description"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-9 offset-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary form-control">@(Model.InventoryItem.Id != 0 ? "Update" : "Create")</button>
+                            </div>
+                            <div class="col-6">
+                                <a asp-action="Index" class="btn btn-success form-control">Back To list </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
