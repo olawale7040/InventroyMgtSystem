@@ -4,7 +4,7 @@
 }
 
 
-
+@if(Model.WarehouseList.Count() > 0) { 
 @foreach (var category in Model.CategoryList)
 {
     if (Model.WarehouseList.Where(c => c.InventoryItem.CategoryId == category.Id).Count() > 0)
@@ -42,4 +42,10 @@
             </div>
         </div>
     }
+}
+}
+else{
+<div style="display:flex;justify-content:center;color:blue;height: 269px;align-items: center;">
+    <h2>No Item in the Warehouse</h2>
+</div>
 }
