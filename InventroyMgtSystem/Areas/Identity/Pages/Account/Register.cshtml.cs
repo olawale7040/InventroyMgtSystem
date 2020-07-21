@@ -108,7 +108,7 @@ namespace InventroyMgtSystem.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
 
-                    await _userManager.AddToRoleAsync(user, SD.WarehouseWorker);
+                    await _userManager.AddToRoleAsync(user, SD.WarehouseManager);
 
                     _logger.LogInformation("User created a new account with password.");
 

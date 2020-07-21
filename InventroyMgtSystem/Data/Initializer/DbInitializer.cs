@@ -42,7 +42,7 @@ namespace InventroyMgtSystem.Data.Initializer
             _roleManager.CreateAsync(new IdentityRole(SD.WarehouseManager)).GetAwaiter().GetResult();
             _db.Category.Add(new Category { Name = SD.Category });
             _db.Category.Add(new Category { Name = SD.CatgoryB });
-
+            _db.SaveChanges();
 
             _userManager.CreateAsync(new Employee
             {

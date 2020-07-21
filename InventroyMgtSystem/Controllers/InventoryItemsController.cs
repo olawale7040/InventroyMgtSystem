@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using InventroyMgtSystem.Models;
 using InventroyMgtSystem.Models.ViewModels;
@@ -54,6 +55,9 @@ namespace InventroyMgtSystem.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult UpSet(InventoryViewModel inventoryVm)
         {
+            var claimIdentity = (ClaimsIdentity)this.User.Identity;
+            var claim = claimIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            inventoryVm.InventoryItem.EmployeeId = claim.Value;
             if (!ModelState.IsValid)
             {
                 inventoryVm.Category = _allDbSets.Category.GetCategoryListOfDropDown();
